@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人所得税计算器</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>个人所得税计算器</h1>
+        
+        <div class="input-section">
+            <div class="input-group">
+                <label for="monthlyIncome">月收入（税前）：</label>
+                <input type="number" id="monthlyIncome" placeholder="请输入月收入">
+            </div>
+            
+            <div class="insurance-section">
+                <h3>社保公积金设置</h3>
+                <div class="insurance-base">
+                    <label for="insuranceBase">社保基数：</label>
+                    <input type="number" id="insuranceBase" placeholder="默认等于月收入">
+                </div>
+                <div class="insurance-base">
+                    <label for="housingFundBase">公积金基数：</label>
+                    <input type="number" id="housingFundBase" placeholder="默认等于月收入">
+                </div>
+                <div class="housing-fund-rate">
+                    <label for="housingFundRate">公积金缴纳比例：</label>
+                    <select id="housingFundRate">
+                        <option value="0.05">5%</option>
+                        <option value="0.06">6%</option>
+                        <option value="0.07">7%</option>
+                        <option value="0.08">8%</option>
+                        <option value="0.09">9%</option>
+                        <option value="0.10">10%</option>
+                        <option value="0.11">11%</option>
+                        <option value="0.12" selected>12%</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button onclick="calculateTax()">计算</button>
+        </div>
+
+        <div class="result-section">
+            <h2>计算结果</h2>
+            <div class="monthly-results">
+                <table id="monthlyTable">
+                    <thead>
+                        <tr>
+                            <th>月份</th>
+                            <th>养老保险</th>
+                            <th>医疗保险</th>
+                            <th>失业保险</th>
+                            <th>公积金</th>
+                            <th>应纳税所得额</th>
+                            <th>税率</th>
+                            <th>应缴税额</th>
+                            <th>税后收入</th>
+                        </tr>
+                    </thead>
+                    <tbody id="monthlyTableBody">
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="annual-summary">
+                <h3>年度汇总</h3>
+                <p>年度总收入（税前）：<span id="annualIncome">0</span> 元</p>
+                <p>年度五险一金总额：<span id="annualInsurance">0</span> 元</p>
+                <p>年度总纳税：<span id="annualTax">0</span> 元</p>
+                <p>年度总收入（税后）：<span id="annualNetIncome">0</span> 元</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
